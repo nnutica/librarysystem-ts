@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+
+
+<!-- ยังไม่สำเร็จ เนื่องจากไม้ได้เชื่อมต่อ Backend -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #bookList { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Library Management</h1>
+
+    <h2>Add Book</h2>
+    <form id="addBookForm">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="year" placeholder="Published Year" required>
+        <select id="genre" required>
+            <option value="Learning">Learning</option>
+            <option value="Fiction">Fiction</option>
+            <option value="NonFiction">NonFiction</option>
+            <option value="Fantasy">Fantasy</option>
+        </select>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <div id="bookList"></div>
+
+    <script src="main.js"></script> <!-- Include your compiled TypeScript file -->
+    <script>
+        const addBookForm = document.getElementById('addBookForm');
+        const bookListDiv = document.getElementById('bookList');
+
+        addBookForm.onsubmit = function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const year = parseInt(document.getElementById('year').value);
+            const genre = document.getElementById('genre').value;
+
+            const newBook = {
+                id: Math.floor(Math.random() * 1000), // Generate random ID
+                title: title,
+                author: author,
+                genre: genre,
+                publishedyear: year,
+                availability: "available"
+            };
+
+            library.AddBook(newBook);
+            displayBooks();
+            addBookForm.reset();
+        };
+
+        function displayBooks() {
+            bookListDiv.innerHTML = ""; // Clear existing content
+            if (library.inventory.length === 0) {
+                bookListDiv.innerHTML = "<p>No books in inventory.</p>";
+                return;
+            }
+            let html = "<ul>";
+            library.inventory.forEach(book => {
+                html += `<li>ID: ${book.id}, Title: ${book.title}, Author: ${book.author}, Status: ${book.availability}</li>`;
+            });
+            html += "</ul>";
+            bookListDiv.innerHTML = html; // Display updated book list
+        }
+
+        // Load initial books if necessary
+        displayBooks();
+    </script>
+</body>
+</html>

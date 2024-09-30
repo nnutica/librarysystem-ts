@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "Abz",
+    "author": "Yaimakmak",
+    "genre": "Learning",
+    "publishedyear": 2010,
+    "availability": "available",
+    "dueDate": "2024-10-01"
+  },
+  {
+    "id": 2,
+    "title": "เรียนแบบไหนให้อยากลาออก",
+    "author": "Yaimakmak",
+    "genre": "Learning",
+    "publishedyear": 2010,
+    "availability": "available"
+  },
+  {
+    "id": 3,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "fiction",
+    "publishedyear": 1925,
+    "availability": "available"
+  }
+]
